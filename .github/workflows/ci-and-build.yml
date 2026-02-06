@@ -25,10 +25,20 @@ jobs:
         with:
           files: '.github/**/*.yml'
 
+      - name: Install ShellCheck
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y shellcheck
+
       - name: ShellCheck shell scripts
-        uses: ludeeus/action-shellcheck@v1
-        with:
-          files: 'ops/*.sh'
+        run: |
+          set -e
+          scripts=$(git ls-files 'ops/*.sh' 'ops/**/*.sh' || true)
+          if [ -z "$scripts" ]; then
+            echo "No shell scripts to lint"
+            exit 0
+          fi
+          echo "$scripts" | xargs -r shellcheck
 
   build_and_push:
     name: Build & push Docker image on tag
