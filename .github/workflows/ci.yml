@@ -1,3 +1,4 @@
+---
 name: Basic CI Checks
 
 on:
@@ -7,7 +8,6 @@ on:
 jobs:
   checks:
     runs-on: ubuntu-latest
-
     steps:
       - name: Get repository
         uses: actions/checkout@v4
@@ -24,4 +24,3 @@ jobs:
       - name: Check shell scripts
         run: |
           shellcheck $(find . -type f -name "*.sh") || true
-
