@@ -40,7 +40,4 @@ Tests locaux recommandés
 ./ops/build_image.sh -i ghcr.io/OWNER/REPO -r v0.0.0 -p
 ```
 
-Support
-
-- Si un échec CI vous bloque, copiez les logs du job et envoyez-les dans l'issue/PR correspondante avec le contexte (commande utilisée, tag, etc.).
 
